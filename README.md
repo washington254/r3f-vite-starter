@@ -1,6 +1,6 @@
-# React Three Fiber starter (Typescript + Vite + GLSL support)
+# React Three Fiber starter (TS + Vite + GLSL support)
 
-A starter template built with Vite for building 3D web applications using React Three Fiber and TypeScript. This boilerplate provides everything you need to start creating immersive 3D experiences with React.
+A starter template built with Vite for building 3D web applications using React Three Fiber and TypeScript with built-in GLSL support. This boilerplate provides everything you need to start creating immersive 3D experiences with React.
 
 ![Alt text](public/example.png)
 
@@ -31,9 +31,9 @@ This boilerplate is powered by:
 
 Includes a basic shader example to get you started with GLSL in React Three Fiber. The example demonstrates:
 - Vertex and fragment shader implementation
-- Uniform handling
+- Uniform and varying handling
 - Time-based animations
-- Texture coordinates
+- Texture coordinates (uv)
 
 ## Getting Started
 
