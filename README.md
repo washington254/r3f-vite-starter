@@ -1,58 +1,42 @@
-#  React Three Fiber typescript basic boilderplate
+# React Three Fiber TypeScript Boilerplate
 
+A basic starter template built with Vite for building 3D web applications using React Three Fiber and TypeScript. This boilerplate provides everything you need to start creating immersive 3D experiences with React.
 
+## Features
 
-#  Vite information
+- ⚡️ **Vite** - Lightning fast development environment with instant HMR
+- 🎨 **React Three Fiber** - React renderer for Three.js
+- 📦 **TypeScript** - Type safety and enhanced developer experience
+- 🎯 **GLSL Shader Support** - Using vite-plugin-glsl for seamless shader imports
+- 🔧 **Hot Module Replacement** - Instant feedback during development
+- 🎮 **Controls** - Orbit controls preconfigured for scene navigation
+- 📱 **Responsive** - Mobile-friendly and responsive design
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech Stack
 
-Currently, two official plugins are available:
+This boilerplate is powered by:
+- [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+- [vite-plugin-glsl](https://github.com/UstymUkhman/vite-plugin-glsl) - Import GLSL shaders as strings
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Shader Example
 
-## Expanding the ESLint configuration
+Includes a basic shader example to get you started with GLSL in React Three Fiber. The example demonstrates:
+- Vertex and fragment shader implementation
+- Uniform handling
+- Time-based animations
+- Texture coordinates
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+# Clone the repository
+git clone [your-repo-url]
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
