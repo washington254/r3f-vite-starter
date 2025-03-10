@@ -2,6 +2,9 @@
 
 A starter template built with Vite for building 3D web applications using React Three Fiber and TypeScript. This boilerplate provides everything you need to start creating immersive 3D experiences with React.
 
+![Alt text](public/example.png)
+
+
 ## Features
 
 - ⚡️ **Vite** - Lightning fast development environment with instant HMR
