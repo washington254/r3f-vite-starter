@@ -5,7 +5,7 @@ const Scene = () => {
 	return (
 		<>
 			<MeshExample />
-			<OrbitControls />
+			<OrbitControls domElement={document.body} />
 		</>
 	);
 };
