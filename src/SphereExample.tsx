@@ -8,8 +8,9 @@ extend({ ShaderMaterialExample });
 const SphereExample = () => {
 	const materialref = useRef<THREE.ShaderMaterial>(null);
 
-	const { frequency } = useControls({
-		frequency: { value: 3.5, min: 0, max: 100.0 },
+	const { frequency, speed } = useControls({
+		frequency: { value: 3.5, min: 2, max: 10.0 },
+		speed: { value: 2.5, min: 0, max: 15.0 },
 	});
 
 	useFrame(({ clock }) => {
@@ -26,6 +27,7 @@ const SphereExample = () => {
 				key={ShaderMaterialExample.key}
 				ref={materialref}
 				uFrequency={frequency}
+				uSpeed={speed}
 			/>
 		</mesh>
 	);

@@ -9,6 +9,7 @@ declare module '@react-three/fiber' {
 		shaderMaterialExample: JSX.IntrinsicElements['shaderMaterial'] & {
 			uFrequency?: number;
 			uTime?: number;
+			uSpeed?: number;
 		};
 	}
 }
@@ -17,6 +18,7 @@ const ShaderMaterialExample = shaderMaterial(
 	{
 		uTime: { value: 0 },
 		uFrequency: { value: 2 },
+		uSpeed: { value: 1.5 },
 	},
 	vertexShader,
 	fragmentShader
