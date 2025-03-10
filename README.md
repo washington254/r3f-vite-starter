@@ -1,4 +1,4 @@
-# React Three Fiber TypeScript Starter
+# React Three Fiber starter (Typescript + Vite + GLSL support)
 
 A starter template built with Vite for building 3D web applications using React Three Fiber and TypeScript. This boilerplate provides everything you need to start creating immersive 3D experiences with React.
 
