@@ -28,14 +28,15 @@ This boilerplate is powered by:
 - [@react-three/drei](https://github.com/pmndrs/drei) - Collection of useful helpers and abstractions
 - [@react-three/postprocessing](https://github.com/pmndrs/react-postprocessing) - Post-processing effects for React Three Fiber
 - [leva](https://github.com/pmndrs/leva) - React-first GUI controls for creative coding
+- [three-stdlib](https://github.com/pmndrs/three-stdlib) - Three.js standard library
 
 ## Shader Example
 
-Includes a basic shader example to get you started with GLSL in React Three Fiber. The example demonstrates:
+Includes a complete shader example to get you started with GLSL in React Three Fiber. The example demonstrates:
 - Vertex and fragment shader implementation
 - Uniform and varying handling
 - Time-based animations
-- Texture coordinates (uv)
+- Post-processing implementation
 
 ## Getting Started
 
@@ -52,4 +53,4 @@ npm run dev
 pnpm dev
 
 ```
-`react-three-fiber` `typescript` `vite` `threejs` `r3f` `glsl` `shaders` `3d` `webgl` `drei` `react` `postprocessing` `leva` `starter-kit` `boilerplate` `template` `vite-plugin-glsl`
+`react-three-fiber` `typescript` `vite` `threejs` `r3f` `glsl` `shaders` `3d` `webgl` `drei` `react` `postprocessing` `leva` `starter-kit` `boilerplate` `template` `vite-plugin-glsl` `three-stdlib`
