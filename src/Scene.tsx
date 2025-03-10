@@ -1,10 +1,10 @@
 import { OrbitControls } from '@react-three/drei';
-import SphereExample from './SphereExample';
+import MeshExample from './MeshExample';
 
 const Scene = () => {
 	return (
 		<>
-			<SphereExample />
+			<MeshExample />
 			<OrbitControls />
 		</>
 	);
