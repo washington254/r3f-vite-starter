@@ -50,3 +50,4 @@ npm run dev
 pnpm dev
 
 ```
+`react-three-fiber` `typescript` `vite` `threejs` `r3f` `glsl` `shaders` `3d` `webgl` `drei` `react` `postprocessing` `leva` `starter-kit` `boilerplate` `template` `vite-plugin-glsl`
