@@ -6,6 +6,8 @@ A starter template built with Vite for building 3D web applications using React 
 
 - ⚡️ **Vite** - Lightning fast development environment with instant HMR
 - 🎨 **React Three Fiber** - React renderer for Three.js
+- 🎁 **Drei** - Useful helpers and fully functional abstractions for R3F
+- 🎬 **Post Processing** - Ready-to-use effects and post-processing setup
 - 📦 **TypeScript** - Type safety and enhanced developer experience
 - 🎯 **GLSL Shader Support** - Using vite-plugin-glsl for seamless shader imports
 - 🔧 **Hot Module Replacement** - Instant feedback during development
@@ -17,6 +19,8 @@ A starter template built with Vite for building 3D web applications using React 
 This boilerplate is powered by:
 - [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
 - [vite-plugin-glsl](https://github.com/UstymUkhman/vite-plugin-glsl) - Import GLSL shaders as strings
+- [@react-three/drei](https://github.com/pmndrs/drei) - Collection of useful helpers and abstractions
+- [@react-three/postprocessing](https://github.com/pmndrs/react-postprocessing) - Post-processing effects for React Three Fiber
 
 ## Shader Example
 
@@ -30,13 +34,14 @@ Includes a basic shader example to get you started with GLSL in React Three Fibe
 
 ```bash
 # Clone the repository
-git clone [your-repo-url]
+git clone https://github.com/renoiser/r3f-vite-starter
 
-# Install dependencies
+# Install dependencies using npm or pnpm
 npm install
+pnpm install
 
-# Start development server
+# Start development server with npm or pnpm
 npm run dev
+pnpm dev
+
 ```
-
-
