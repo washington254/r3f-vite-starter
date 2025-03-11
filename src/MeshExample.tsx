@@ -11,7 +11,7 @@ const SphereExample = () => {
 	const materialref = useRef<THREE.ShaderMaterial>(null);
 
 	const { frequency, speed, bloom } = useControls({
-		frequency: { value: 3.5, min: 2, max: 100.0 },
+		frequency: { value: 3, min: 2, max: 100.0 },
 		speed: { value: 2.5, min: 0, max: 15 },
 		bloom: { value: 4, min: 0, max: 8 },
 	});
@@ -26,7 +26,7 @@ const SphereExample = () => {
 	return (
 		<>
 			<mesh rotation={[Math.PI * 0.5, 0, 0]}>
-				<sphereGeometry args={[1, 50]} />
+				<icosahedronGeometry args={[1, 20]} />
 				<shaderMaterialExample
 					key={ShaderMaterialExample.key}
 					ref={materialref}
