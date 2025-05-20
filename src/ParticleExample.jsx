@@ -1,70 +1,113 @@
-
-import { useFrame } from "@react-three/fiber";
+import { useFBO } from "@react-three/drei";
+import { useFrame, extend, createPortal } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
 
 import vertexShader from './shaders/vertex.glsl';
 import fragmentShader from './shaders/fragment.glsl';
+import SimulationMaterial from './SimulationMaterial';
 
-export const CustomGeometryParticles = (props) => {
-  const { count } = props;
-  const radius = 2;
+extend({ SimulationMaterial: SimulationMaterial });
+
+
+export const FBOParticles = () => {
+  const size = 128;
 
   // This reference gives us direct access to our points
-  const points = useRef(null);
+  const points = useRef();
+  const simulationMaterialRef = useRef();
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 1 / Math.pow(2, 53), 1);
+  const positions = new Float32Array([-1, -1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0]);
+   const uvs = new Float32Array([
+    0, 0,  // bottom-left
+    1, 0,  // bottom-right
+    1, 1,  // top-right
+    0, 0,  // bottom-left
+    1, 1,  // top-right
+    0, 1   // top-left
+  ]);
+
+  const renderTarget = useFBO(size, size, {
+    minFilter: THREE.NearestFilter,
+    magFilter: THREE.NearestFilter,
+    format: THREE.RGBAFormat,
+    stencilBuffer: false,
+    type: THREE.FloatType,
+  });
 
   // Generate our positions attributes array
   const particlesPosition = useMemo(() => {
-    const positions = new Float32Array(count * 3);
-    
-    for (let i = 0; i < count; i++) {
-      const distance = Math.sqrt(Math.random()) * radius;
-      const theta = THREE.MathUtils.randFloatSpread(360); 
-      const phi = THREE.MathUtils.randFloatSpread(360); 
-
-      let x = distance * Math.sin(theta) * Math.cos(phi)
-      let y = distance * Math.sin(theta) * Math.sin(phi);
-      let z = distance * Math.cos(theta);
-
-      positions.set([x, y, z], i * 3);
+    const length = size * size;
+    const particles = new Float32Array(length * 3);
+    for (let i = 0; i < length; i++) {
+      let i3 = i * 3;
+      particles[i3 + 0] = (i % size) / size;
+      particles[i3 + 1] = i / size / size;
     }
-    
-    return positions;
-  }, [count]);
+    return particles;
+  }, [size]);
 
   const uniforms = useMemo(() => ({
-    uTime: {
-      value: 0.0
-    },
-    uRadius: {
-      value: radius
+    uPositions: {
+      value: null,
     }
   }), [])
 
   useFrame((state) => {
-    const { clock } = state;
-    if (!points.current) return;
-    points.current.material.uniforms.uTime.value = clock.elapsedTime;
+    const { gl, clock } = state;
+
+    gl.setRenderTarget(renderTarget);
+    gl.clear();
+    gl.render(scene, camera);
+    gl.setRenderTarget(null);
+
+    points.current.material.uniforms.uPositions.value = renderTarget.texture;
+
+    simulationMaterialRef.current.uniforms.uTime.value = clock.elapsedTime;
   });
 
   return (
-    <points ref={points}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={particlesPosition.length / 3}
-          array={particlesPosition}
-          itemSize={3}
+    <>
+      {createPortal(
+        <mesh>
+          <simulationMaterial ref={simulationMaterialRef} args={[size]} />
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={positions.length / 3}
+              array={positions}
+              itemSize={3}
+            />
+            <bufferAttribute
+              attach="attributes-uv"
+              count={uvs.length / 2}
+              array={uvs}
+              itemSize={2}
+            />
+          </bufferGeometry>
+        </mesh>,
+        scene
+      )}
+      <points ref={points}>
+        <bufferGeometry>
+          <bufferAttribute
+            attach="attributes-position"
+            count={particlesPosition.length / 3}
+            array={particlesPosition}
+            itemSize={3}
+          />
+        </bufferGeometry>
+        <shaderMaterial
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          fragmentShader={fragmentShader}
+          vertexShader={vertexShader}
+          uniforms={uniforms}
         />
-      </bufferGeometry>
-      <shaderMaterial
-        blending={THREE.AdditiveBlending}
-        depthWrite={false}
-        fragmentShader={fragmentShader}
-        vertexShader={vertexShader}
-        uniforms={uniforms}
-      />
-    </points>
+      </points>
+    </>
   );
 };
