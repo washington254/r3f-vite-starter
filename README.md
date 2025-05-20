@@ -1,8 +1,7 @@
-# React Three Fiber starter (TS + Vite + GLSL support)
+# React Three Fiber FBO particles and normal particles starter (TS + Vite + GLSL support)
 
-👁️ [Preview Link](https://renoiser.github.io/r3f-vite-starter/)
 
-A starter template built with Vite for building 3D web applications using React Three Fiber and TypeScript with built-in GLSL support. This boilerplate provides everything you need to start creating immersive 3D experiences with React.
+A starter template for normal particles and FBO particles using React Three Fiber and TypeScript with built-in GLSL support. built from https://renoiser.github.io/r3f-vite-starter/ boilerplate
 
 ![Alt text](public/example.png)
 
@@ -32,25 +31,23 @@ This boilerplate is powered by:
 
 ## Shader Example
 
-Includes a complete shader example to get you started with GLSL in React Three Fiber. The example demonstrates:
-- Vertex and fragment shader implementation
-- Uniform and varying handling
-- Time-based animations
-- Post-processing implementation
+Includes an example of FBO particles and normal particles using React Three Fiber and TypeScript with built-in GLSL support.
 
 ## Getting Started
 
 ```bash
 # Clone the repository
-git clone https://github.com/renoiser/r3f-vite-starter
+git clone https://github.com/washington/r3f-particle-starter
 
 # Install dependencies using npm or pnpm
 npm install
 pnpm install
+yarn 
 
 # Start development server with npm or pnpm
 npm run dev
 pnpm dev
+yarn dev
 
 ```
 `react-three-fiber` `typescript` `vite` `threejs` `r3f` `glsl` `shaders` `3d` `webgl` `drei` `react` `postprocessing` `leva` `starter-kit` `boilerplate` `template` `vite-plugin-glsl` `three-stdlib`
